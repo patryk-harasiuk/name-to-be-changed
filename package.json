@@ -1,7 +1,8 @@
 {
-  "name": "name-to-be-changed",
+  "name": "interactive-educational-script-viewer",
   "private": true,
   "version": "0.0.0",
+  "description": "A React and TypeScript prototype for a camera-driven Markdown lesson viewer.",
   "type": "module",
   "scripts": {
     "dev": "vite",

@@ -1,33 +1,45 @@
-# 🚀 Wstęp do Interaktywnych Skryptów
-Witaj w trybie prezentacji! Ten dokument udowadnia, że zwykły plik tekstowy może stać się płynnym, kinowym doświadczeniem edukacyjnym.
+# Interactive Script Viewer
+This ordinary Markdown file is rendered as a guided teaching canvas. The camera centers one block at a time so the class sees only the current idea.
 
-Naciśnij **Strzałkę w prawo** lub **Spację**, aby przejść do następnego panelu.
+Use **Arrow Right** or **Space** to move forward. Use **Arrow Left** to move backward. Press **M** to switch between step navigation and page navigation.
 
-## 🛠 Główne założenia projektu
-Zamiast tradycyjnych, nudnych slajdów (np. w PowerPoint), korzystamy z nowoczesnych technologii webowych.
+> Teaching prompt: ask learners what changes when a lesson moves from scrolling to a directed reading path.
 
-Nasze cele to:
-* **Separacja treści od wyglądu:** Wykładowca skupia się tylko na pisaniu tekstu.
-* **Płynność (Marvel Style):** Aplikacja sama dba o odpowiednie przesuwanie i skalowanie widoku kamery.
-* **Uniwersalność:** Skrypt zadziała na każdym urządzeniu.
+## Core classroom experience
+Every top-level heading, paragraph, list, blockquote, and code block becomes a targetable step.
 
-## 🧮 Wsparcie dla Matematyki (KaTeX)
-W przyszłości zintegrujemy bibliotekę, która zamieni zwykły tekst w piękne wzory matematyczne. 
+The active step is centered and highlighted. In spotlight mode, inactive steps fade away so students are not distracted by the rest of the handout.
 
-Oto równanie opisujące Transformację Fouriera. Kiedy podepniemy KaTeX, ten blok zamieni się w wektorową grafikę:
+- Step mode advances through every block.
+- Page mode jumps to the next major section, similar to turning a page in a comic reader.
+- PageUp and PageDown always jump between major sections.
 
-$$
+> Quick task: switch to page mode and compare the pacing with step mode.
+
+## Responsive layout
+The layout is intentionally mobile-first. Compact screens use a single vertical column because it preserves readability on laptops, tablets, and phones.
+
+On wide displays, pages are arranged as an open-book spread. This gives the project a foundation for classroom monitors without changing how teachers write Markdown.
+
+## Future plugins
+The parser keeps the Markdown structure available as metadata, which makes future integrations straightforward.
+
+```latex
 \hat{f}(\xi) = \int_{-\infty}^{\infty} f(x) e^{-2\pi i x \xi} dx
-$$
+```
 
-## 💻 Technologie pod maską
-Aby osiągnąć ten efekt, wykorzystaliśmy genialne narzędzia ze świata frontend'u. 
+KaTeX can later transform LaTeX blocks into scalable formulas while keeping the same step model.
 
-Oto jak wygląda fragment naszego kodu w React:
+```mermaid
+flowchart LR
+  Markdown --> Parser
+  Parser --> Steps
+  Steps --> Camera
+```
 
-```typescript
-const handleKeyDown = (e: KeyboardEvent) => {
-  if (e.key === 'ArrowRight') {
-    nextPanel();
-  }
-};
+Mermaid can later render diagrams directly from fenced code blocks.
+
+## Package direction
+The viewer is exported from `src/lib/index.ts` so the prototype can evolve into an npm package.
+
+Consumers should provide Markdown and let the component own parsing, navigation, camera movement, and spotlight behavior.
